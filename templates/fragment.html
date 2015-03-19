@@ -1,0 +1,5 @@
+{% if project %}
+{% include "templates/project.html" %}
+{% else %}
+{% strip %}{{ fragment|safe }}{% endstrip %}
+{% endif %}

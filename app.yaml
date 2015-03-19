@@ -1,0 +1,57 @@
+application: nicoprinsdev
+version: 4
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /map
+  static_dir: map/xml
+
+- url: /(.*\.css)
+  mime_type: text/css
+  static_files: static/\1
+  upload: static/(.*\.css)
+  application_readable: true
+
+- url: /(.*\.map)
+  mime_type: text/css
+  static_files: static/\1
+  upload: static/(.*\.map)
+
+- url: /(.*\.xml)
+  mime_type: text/xml
+  static_files: static/\1
+  upload: static/(.*\.xml)
+
+- url: /(.*\.js)
+  mime_type: text/javascript
+  static_files: static/\1
+  upload: static/(.*\.js)
+  application_readable: true
+ 
+- url: /(.*\.json)
+  mime_type: application/json
+  static_files: static/\1
+  upload: static/(.*\.json)
+  expiration: "1h"
+
+- url: /(.*\.(bmp|gif|ico|jpeg|jpg|png))
+  static_files: static/\1
+  upload: static/(.*\.(bmp|gif|ico|jpeg|jpg|png))
+
+- url: /.*
+  script: main.application
+
+libraries:
+
+- name: webapp2
+  version: latest
+
+- name: jinja2
+  version: latest

@@ -1,0 +1,9 @@
+{% if pill %}
+<ul class="pill">
+	<li class="progress" style="width: {{ pill.progress }}"></li>
+	<li class="prev{% if not pill.prev %}{{ " " }}disabled{% endif %}"><a href="/{{ pill.prev }}" data-section="work">&laquo;</a></li>
+	<li><p>{{ pill.index}}/{{ pill.length }}</p></li>
+	<li class="next{% if not pill.next %}{{ " " }}disabled{% endif %}"><a href="/{{ pill.next }}" data-section="work">&raquo;</a></li>
+</ul>
+{% endif %}
+{{ fragment|safe }}
