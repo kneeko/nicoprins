@@ -405,6 +405,7 @@ hr {
 hr.decor {
 	border: none;
 	padding-top: 15px;
+	text-align: center;
 }
 
 hr.decor:before {
@@ -455,8 +456,6 @@ ul.pill:before {
 	border-radius: 2px;
 }
 
-
-//ul.pill:after {
 ul.pill li.progress {
 	display: inline-block;
 	content: "";
@@ -467,8 +466,13 @@ ul.pill li.progress {
 	position: absolute;
 	width: 0%;
 	height: 4px;
-	border-radius: 2px;
+	border-top-left-radius: 2px;
+	border-bottom-left-radius: 2px;
 	margin: 0;
+}
+
+ul.pill li.progress[data-progress*="100"] {
+	border-radius: 2px;
 }
 
 ul.pill li {
