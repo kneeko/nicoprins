@@ -31,9 +31,9 @@
 	<nav>
 		<a href="/work" data-section="work"><img class="logo" src="/static/logo.png"></a>
 		<ul class="links">
-			<li><a {% if name == "work" %}class="active"{% endif %} href="/work" data-section="work">work</a></li>
-			<li><a {% if name == "about" %}class="active"{% endif %} href="/about" data-section="about">about</a></li>
-			<li><a {% if name == "contact" %}class="active"{% endif %} href="/contact" data-section="contact">contact</a></li>
+			<li><a {% if name == "work" %}class="active"{{ " " }}{% endif %} href="/work" data-section="work">work</a></li>
+			<li><a {% if name == "about" %}class="active"{{ " " }}{% endif %} href="/about" data-section="about">about</a></li>
+			<li><a {% if name == "contact" %}class="active"{{ " " }}{% endif %} href="/contact" data-section="contact">contact</a></li>
 		</ul>
 	</nav>
 	<div class="content" data-view="{{ name }}">
