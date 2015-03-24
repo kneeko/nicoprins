@@ -14,6 +14,15 @@ env = jinja2.Environment(
 	extensions = ['jinja2.ext.autoescape', 'jinja2htmlcompress.HTMLCompress', 'jinja2htmlcompress.SelectiveHTMLCompress'],
 	autoescape = True)
 
+titles = [
+	"oh my giraffe",
+	"Radio Hyrule",
+	"Theo Prins",
+	"PT Art &amp; Frame",
+	"BrainStorm for Education",
+	"By Hand &amp; Eye",
+]
+
 projects = [
 	"work/oh-my-giraffe",
 	"work/radio-hyrule",
@@ -30,7 +39,7 @@ def get_fragment(resource):
 		fragment = file(path, "r").read().decode("utf8")
 		return fragment
 
-def get_document(resource, template):
+def render_document(resource, template):
 
 	values = {}
 	resource = "work" if not resource else resource
@@ -55,18 +64,25 @@ def get_document(resource, template):
 	try:
 		index = projects.index(resource)
 		if index is not None:
+
 			values["project"] = True
+			values["title"] = titles[index]
+
 			pill = {}
 			pill["progress"] = str((index + 1) / float(len(projects)) * 100)
 			pill["index"] = index + 1
 			pill["length"] = len(projects)
+
 			prev_index = index - 1
 			if prev_index >= 0:
 				pill["prev"] = projects[prev_index]
+
 			next_index = index + 1
 			if next_index < len(projects):
 				pill["next"] = projects[next_index]
+
 			values["pill"] = pill
+
 	except ValueError:
 		pass
 
@@ -76,7 +92,7 @@ def get_document(resource, template):
 class FragmentHandler(webapp2.RequestHandler):
 	def get(self, resource):
 		template = env.get_template("templates/fragment.html")
-		markup = get_document(resource, template)
+		markup = render_document(resource, template)
 		self.response.out.write(markup)
 
 class ResourceHandler(webapp2.RequestHandler):
@@ -84,7 +100,7 @@ class ResourceHandler(webapp2.RequestHandler):
 		if resource == "work":
 			self.redirect("/")
 		template = env.get_template("templates/base.html")
-		markup = get_document(resource, template)
+		markup = render_document(resource, template)
 		self.response.out.write(markup)
 
 application = webapp2.WSGIApplication([
