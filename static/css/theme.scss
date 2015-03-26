@@ -548,10 +548,21 @@ ul.tiles li {
 	width: 50%;
 
 	transition: transform 0.125s ease;
+	margin: -1px;
+	border: 1px solid transparent;
 }
 
 ul.tiles li:hover {
-	opacity: 0.92;
+	//opacity: 0.92;
+	// i may want to make a border here
+	// along with a background change
+	/*
+	border: 1px solid;
+	margin: -1px;
+	background: #eee9e7;
+	border-radius: 2px;
+	border-color: rgba(0, 0, 0, 0.0095);
+	*/
 }
 
 ul.tiles li:active {
