@@ -7,6 +7,8 @@ from google.appengine.api import users
 from google.appengine.api import images
 from google.appengine.ext import ndb
 
+from slimmer import html_slimmer
+
 from jinja2htmlcompress import SelectiveHTMLCompress
 
 env = jinja2.Environment(
@@ -37,7 +39,8 @@ def get_fragment(resource):
 	path = os.path.join(os.path.dirname(__file__), "static/fragments/%s.html" % resource)
 	if os.path.isfile(path):
 		fragment = file(path, "r").read().decode("utf8")
-		return fragment
+		markup = html_slimmer(fragment)
+		return markup
 
 def render_document(resource, template):
 
