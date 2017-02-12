@@ -11,6 +11,8 @@ $panel-background: transparent;
 $panel-shadow: 0px 1px 1px rgba(0, 0, 0, 0);
 
 body {
+	transform: scale(1);
+	transform-origin: 50% 0%;
 	background: url(../static/noise.png),
 		linear-gradient(#f4f0eb, #f1efe8);
 	background-attachment: fixed;
@@ -63,6 +65,7 @@ ul.collapse {
 }
 
 nav {
+	margin-top: 10px;
 	width: 90px;
 	position: absolute;
 	-webkit-user-select: none;
@@ -116,7 +119,7 @@ nav ul {
 	background: $panel-background;
 	box-shadow: $panel-shadow;
 
-	padding: 10px;
+	padding: 10px 0;
 	margin: 0;
 	border-radius: 4px;
 	list-style: none;
@@ -161,9 +164,14 @@ nav li a:active {
 	transform: translate(0, 1.5px);
 }
 
+img.icon {
+	max-height: 1.75em;
+	vertical-align: middle;
+}
+
 .content {
 	position: relative;
-	margin-left: 100px;
+	margin-left: 93px;
 	padding: 3px 0 0 20px;
 	opacity: 1;
 	transition: opacity 0.175s ease-out;
@@ -188,8 +196,8 @@ a.button {
 }
 
 section, article {
-	padding: 15px 10px;
-	margin-bottom: 20px;
+	padding: 15px 10px 0 10px;
+	//margin-bottom: 20px;
 	border-radius: 4px;
 	border: $panel-border;
 	background: $panel-background;
@@ -201,12 +209,12 @@ ol {
 }
 
 section {
-	padding: 15px 5px;
+	padding: 15px 5px 0 5px;
 }
 
 article {
 	padding: 15px;
-	font-size: 14px;
+	font-size: 16px;
 }
 
 article img {
@@ -216,13 +224,55 @@ article img {
 }
 
 header {
-	display: inline-block;
+	display: block;
 	margin: 0 0 10px 0;
 	padding: 10px 15px;
 	border-radius: 4px;
 	border: $panel-border;
 	background: $panel-background;
 	box-shadow: $panel-shadow;
+}
+
+table td {
+	padding: 5px 10px 5px 0;
+}
+
+.clear:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.video-embed {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	height: 0;
+}
+
+.video-embed iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.video-embed .border {
+    width: inherit;
+    height: 100%;
+    border-radius: 8px;
+    border: 4px solid #f5f2eb;
+    z-index: 100;
+    position: absolute;
+    pointer-events: none;
+
+	position: absolute;
+	top: -4px;
+	left: -4px;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
 }
 
 /*
@@ -241,13 +291,18 @@ header.hero h1 {
 
 header a {
 	color: #abc4c0;
+	font-weight: bold;
 	text-decoration: none;
 	border-bottom: 1px dotted #abc4c0;
 }
 
-header a:hover {
+a:hover {
 	color: #b7d1cd;
 	cursor: pointer;
+}
+
+a:active {
+	color: #abc4c0;
 }
 
 header time {
@@ -318,16 +373,33 @@ article.slim section {
 }
 
 img.portrait {
-	display: block;
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	top: 0;
+	//display: block;
+	//position: absolute;
+	//left: 0;
+	//right: 0;
+	//bottom: 0;
+	//top: 0;
+	//width: 100%;
+	//height: 100%;
+	//max-width: 100%;
 	border-radius: 3px;
-	width: 100%;
-	height: 100%;
-	max-width: 100%;
+	float: right;
+	max-width: 110px;
+	margin-left: 15px;
+}
+
+img.portrait.large {
+	max-width: 150px;
+	margin-top: 10px;
+}
+
+.name {
+	white-space: nowrap;
+}
+
+.line {
+	border-bottom: 1px dotted #abc4c0;
+    margin: 0 15px 5px 15px;
 }
 
 span.caption {
@@ -358,6 +430,7 @@ article aside {
 
 article a {
 	color: #abc4c0;
+	font-weight: bold;
 	text-decoration: none;
 	border-bottom: 1px dotted #abc4c0;
 }
@@ -383,12 +456,16 @@ header * {
 }
 
 header h1 {
-	font-size: 16.8px;
+	font-size: 16.2px;
 }
 
 header h3 {
 	font-size: 16px;
 	font-weight: 400;
+}
+
+header p {
+	line-height: 1.6em;
 }
 
 hr {
@@ -724,6 +801,9 @@ ul.tiles span {
 
 @media only screen and (max-width: 550px) {
 
+	img.portrait {
+		display: none;
+	}
 
 	nav {
 		position: relative;
@@ -806,6 +886,7 @@ ul.tiles span {
 		margin-bottom: 5px;
 	}
 
+
 	article aside {
 		max-width: 100%;
 		width: 100%;
@@ -847,6 +928,10 @@ ul.tiles span {
 .spinner.active {
 	opacity: 0.8;
 	transition: opacity 0.15s ease;
+}
+
+.no-bot {
+	padding-bottom: 0;
 }
 
 @-webkit-keyframes rotating {

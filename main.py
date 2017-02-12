@@ -17,21 +17,15 @@ env = jinja2.Environment(
 	autoescape = True)
 
 titles = [
+        "Topsoil",
 	"oh my giraffe",
-	"Radio Hyrule",
-	"Theo Prins",
-	"PT Art &amp; Frame",
-	"BrainStorm for Education",
-	"By Hand &amp; Eye",
+        "Bring Your Own Book",
 ]
 
 projects = [
+	"work/topsoil",
 	"work/oh-my-giraffe",
-	"work/radio-hyrule",
-	"work/theo-prins",
-	"work/pt-art-and-frame",
-	"work/brainstorm",
-	"work/by-hand-and-eye",
+	"work/bring-your-own-book",
 ]
 
 def get_fragment(resource):
