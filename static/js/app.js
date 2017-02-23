@@ -107,7 +107,7 @@
 			}
 		};
 
-		if (replacing)
+		if (replacing) {
 			$.ajax({
 				url: resource,
 				type: "GET",
@@ -115,6 +115,7 @@
 				success: success,
 				complete: complete,
 			});
+		}
 	}
 
 	$('nav a[data-section]').click(function(event) {

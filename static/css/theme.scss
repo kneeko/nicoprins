@@ -247,6 +247,7 @@ table td {
 	position: relative;
 	padding-bottom: 56.25%; /* 16:9 */
 	height: 0;
+	background: linear-gradient(rgba(0,0,0,0.045), rgba(0,0,0,0.06));
 }
 
 .video-embed iframe {

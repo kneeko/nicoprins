@@ -46,8 +46,12 @@ handlers:
   upload: static/(.*\.(bmp|gif|ico|jpeg|jpg|png))
   expiration: "7d"
 
+- url: /\.well\-known\/acme\-challenge\/.*
+  script: letsencrypt.app
+
 - url: /.*
   script: main.application
+  secure: always
 
 libraries:
 

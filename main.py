@@ -18,7 +18,7 @@ env = jinja2.Environment(
 
 titles = [
         "Topsoil",
-	"oh my giraffe",
+	"Oh My Giraffe",
         "Bring Your Own Book",
 ]
 
